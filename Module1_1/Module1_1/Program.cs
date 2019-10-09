@@ -17,7 +17,7 @@ namespace Module1_1
             int temp = b;
             b = a;
             a = temp;
-            Console.WriteLine("Результат:a={0},b={1}",a,b);
+            Console.WriteLine("Результат:a={0},b={1}", a, b);
             Console.ReadLine();
         }
     }
