@@ -17,11 +17,11 @@ namespace TrainingPart2_Task1
 
         public void DrawTable()
         {
-            Console.WriteLine("Доход \tРасход");
+            Console.WriteLine("Доход\t\tРасход");
 
             for (int i = 0; i < incomesList.Count; i++)
             {
-                Console.WriteLine(incomesList[i] + "\t" + expensesList[i]);
+                Console.WriteLine(incomesList[i] + "\t\t" + expensesList[i]);
             }
 
         }

@@ -7,7 +7,7 @@ namespace TrainingPart2_Task1
     class IncomeInput
     {
         List<double> incomes;
-
+        const double taxPercent= 13;
         public IncomeInput(List<double> incomes)
         {
             this.incomes = incomes;
@@ -20,7 +20,7 @@ namespace TrainingPart2_Task1
 
             if (isIncomeCorrect == true && inputIncome >= 0)
             {
-                incomes.Add(inputIncome);
+                incomes.Add(inputIncome*(1-taxPercent/100));
             }
             else
             {

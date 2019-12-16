@@ -15,7 +15,7 @@ namespace TrainingPart2_Task1
 
         public void Output()
         {
-            Console.WriteLine("Доходы");
+            Console.WriteLine("Доходы c учетом налога");
 
             foreach (double income in incomesList)
             {
