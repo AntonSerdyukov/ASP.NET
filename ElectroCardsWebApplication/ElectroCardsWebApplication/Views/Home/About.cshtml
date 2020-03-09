@@ -1,0 +1,42 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Хранилище электронных карт</title>
+</head>
+<body>
+    <div>
+        <h3>Карты</h3>
+        <table>
+            <tr>
+                <td><p>Имя</p></td>
+                <td><p>Фамилия</p></td>
+                <td><p>Отчество</p></td>
+                <td><p>Дата рождения</p></td>
+                <td><p>Телефон</p></td>
+                <td><p>Место работы</p></td>
+                <td><p>Фото</p></td>
+                <td></td>
+            </tr>
+            @foreach (var b in ViewBag.Patients)
+            {
+            <tr>
+                <td><p>@b.Name</p></td>
+                <td><p>@b.Surname</p></td>
+                <td><p>@b.Patronymic</p></td>
+                <td><p>@b.BirthDate</p></td>
+                <td><p>@b.Telephone</p></td>
+                <td><p>@b.WorkPlace</p></td>
+                <td><p>@b.Photo</p></td>
+                <td><p><a href="/Home/Buy/@b.Id">Купить</a></p></td>
+            </tr>
+            }
+        </table>
+    </div>
+</body>
+</html>
