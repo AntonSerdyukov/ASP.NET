@@ -1,0 +1,64 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Add Patient</title>
+</head>
+<body>
+    <div>
+        <h3>Форма ввода данных о пациенте</h3>
+        <form method="post" action="">
+            <input type="hidden" value="@ViewBag.PatientId" name="PatientId" />
+            <table>
+                <tr>
+                    <td><p>Введите имя пациента</p></td>
+                    <td><input type="text" name="Name" /> </td>
+                </tr>
+                <tr>
+                    <td><p>Введите фамилию пациента:</p></td>
+                    <td>
+                        <input type="text" name="Surname" />
+                    </td>
+                </tr>
+                <tr>
+                    <td><p>Введите отчество пациента </p></td>
+                    <td><input type="text" name="Patronymic" /> </td>
+                </tr>
+                <tr>
+                    <td><p>Введите дату рождения пациента:</p></td>
+                    <td>
+                        <input type="text" name="BirthDate" />
+                    </td>
+                </tr>
+                <tr>
+                    <td><p>Введите телефон пациента:</p></td>
+                    <td>
+                        <input type="text" name="Telephone" />
+                    </td>
+                </tr>
+                <tr>
+                    <td><p>Введите место работы пациента:</p></td>
+                    <td>
+                        <input type="text" name="WorkPlace" />
+                    </td>
+                </tr>
+                <tr>
+                    <td><p>Введите ссылку на фото пациента(необязательно):</p></td>
+                    <td>
+                        <input type="text" name="Photo" />
+                    </td>
+                </tr>
+                <tr><td><input type="submit" value="Отправить" /> </td><td></td></tr>
+
+            </table>
+        </form>
+    </div>
+
+</body>
+</html>
