@@ -13,10 +13,10 @@ namespace ElectroCardsWebApplicationVariant7.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class ApplicationCardsDbEntities : DbContext
+    public partial class ApplicationCardsDbEntities1 : DbContext
     {
-        public ApplicationCardsDbEntities()
-            : base("name=ApplicationCardsDbEntities")
+        public ApplicationCardsDbEntities1()
+            : base("name=ApplicationCardsDbEntities1")
         {
         }
     

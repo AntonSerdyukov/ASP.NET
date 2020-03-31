@@ -54,6 +54,7 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -167,8 +168,8 @@
     <Content Include="Content\Site.css" />
     <Content Include="Models\ElectroCardsAppDb.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ElectroCardsAppDb.Context.cs</LastGenOutput>
       <DependentUpon>ElectroCardsAppDb.edmx</DependentUpon>
+      <LastGenOutput>ElectroCardsAppDb.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Models\ElectroCardsAppDb.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -215,6 +216,7 @@
     <Content Include="Views\Home\AddPatient.cshtml" />
     <Content Include="Views\Home\RemovePatient.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Home\EditPatientOldData.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

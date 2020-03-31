@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Data.Entity;
 using System.Web.Mvc;
 using ElectroCardsWebApplicationVariant7.Models;
 
@@ -10,12 +11,13 @@ namespace ElectroCardsWebApplicationVariant7.Controllers
 {
     public class HomeController : Controller
     {
-        ApplicationCardsDbEntities db = new ApplicationCardsDbEntities();
+        ApplicationCardsDbEntities1 db = new ApplicationCardsDbEntities1();
+    
 
         [HttpGet]
-        public ActionResult AddPatient()
+        public ActionResult AddPatient(int? id)
         {
-
+            ViewBag.PatientId = id ?? 0;
             return View();
         }
 
@@ -47,26 +49,41 @@ namespace ElectroCardsWebApplicationVariant7.Controllers
         [HttpPost]
         public ActionResult RemovePatient(Patient patient)
         {
-
+            db.Patients.Attach(patient);
             foreach (Patient p in db.Patients)
             {
                 if (p.Name == patient.Name && p.Surname == patient.Surname)
                 {
                     db.Patients.Remove(p);
-                   
+                    
 
                 }
             }
 
+            db.SaveChanges();
+
 
             return RedirectToAction("Index");
+        }
 
+        [HttpGet]
+        public ActionResult EditPatientOldData()
+        {
 
-            // удаляем запись из базы данных в базу данных
+            return View();
 
-            // сохраняем в бд все изменения
+        }
 
-
+        [HttpPost]
+        public ActionResult EditPatientOldData(Patient oldPatient,Patient newPatient)
+        {
+            db.Patients.Attach(oldPatient);
+            db.Patients.Remove(oldPatient);
+            
+            db.Patients.Add(newPatient);
+            db.Entry(newPatient).State = EntityState.Added;
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
 
         public ActionResult Index()
