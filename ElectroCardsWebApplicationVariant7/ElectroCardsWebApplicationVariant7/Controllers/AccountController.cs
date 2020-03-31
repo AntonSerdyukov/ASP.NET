@@ -21,11 +21,39 @@ namespace ElectroCardsWebApplicationVariant7.Controllers
 
             return View();
         }
-
+        [HttpGet]
         public ActionResult Login()
         {
+            
             return View();
         }
+
+        [HttpPost]
+        public ActionResult Login(User user)
+        {
+           
+            foreach (User u in db.Users)
+            {
+                if (u.Email == user.Email && u.Password == user.Password && u.Role == user.Role)
+                {
+                    switch (user.Role)
+                    {
+                        case "user":
+                            return RedirectToAction("Index", "Home");
+                        case "doctor":
+                            return RedirectToAction("Index", "Doctor");
+                        case "editor":
+                            return RedirectToAction("Index", "Home");
+                        case "admin":
+                            return RedirectToAction("Index", "Admin");
+
+                    }
+                }
+            }
+            
+            return View();
+        }
+
         [HttpGet]
         public ActionResult Register()
         {
@@ -34,7 +62,7 @@ namespace ElectroCardsWebApplicationVariant7.Controllers
         [HttpPost]
         public ActionResult Register(User user)
         {
-            ApplicationCardsDbEntities2 db = new ApplicationCardsDbEntities2();
+            
      
             db.Users.Attach(user);
             db.Users.Add(user);

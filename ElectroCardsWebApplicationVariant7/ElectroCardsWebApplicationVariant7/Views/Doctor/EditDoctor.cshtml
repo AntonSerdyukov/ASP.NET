@@ -1,0 +1,64 @@
+﻿
+@{
+    Layout = null;
+}
+
+@model IEnumerable<ElectroCardsWebApplicationVariant7.Models.Doctor>
+@{
+    ViewBag.Title = "";
+}
+
+
+
+
+<table>
+    <tr>
+        <th>Имя   </th>
+        <th>  </th>
+        <th>  Фамилия </th>
+        <th>  </th>
+        <th>   Отчество</th>
+        <th>  </th>
+        <th>   Должность </th>
+        <th>  </th>
+        <th>   Телефон </th>
+        <th>  </th>
+        
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <th>  </th>
+            <td>
+                @Html.DisplayFor(modelItem => item.Surname)
+            </td>
+            <th>  </th>
+            <td>
+                @Html.DisplayFor(modelItem => item.Patronymic)
+            </td>
+            <th>  </th>
+            <td>
+                @Html.DisplayFor(modelItem => item.Position)
+            </td>
+            <th>  </th>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telephone)
+            </td>
+            
+            <th>  </th>
+            <td>
+                @Html.ActionLink("Редактировать", "AddDoctor", new { id = item.DoctorId }) |
+            </td>
+
+
+        </tr>
+    }
+    
+</table>
+    
+
