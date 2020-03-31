@@ -2,17 +2,52 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Data.Entity;
 using System.Web.Mvc;
 using ElectroCardsWebApplicationVariant7.Models;
 
-
 namespace ElectroCardsWebApplicationVariant7.Controllers
 {
-    public class HomeController : Controller
+    public class AdminController : Controller
     {
         ApplicationCardsDbEntities2 db = new ApplicationCardsDbEntities2();
-    
+
+        [HttpGet]
+        public ActionResult AddUser(int? id)
+        {
+            ViewBag.PatientId = id ?? 0;
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddUser(User user)
+        {
+
+            db.Users.Attach(user);
+
+            // добавляем информацию о запии в базу данных
+            db.Users.Add(user);
+            db.SaveChanges();
+
+
+            // сохраняем в бд все изменения
+
+
+            return View();
+        }
+
+        
+
+        [HttpPost]
+        public ActionResult RemoveUser(User user)
+        {
+            db.Users.Attach(user);
+            db.Users.Remove(user);
+
+            db.SaveChanges();
+
+
+            return RedirectToAction("Index");
+        }
 
         [HttpGet]
         public ActionResult AddPatient(int? id)
@@ -24,9 +59,9 @@ namespace ElectroCardsWebApplicationVariant7.Controllers
         [HttpPost]
         public ActionResult AddPatient(PatientData patient)
         {
-           
+
             db.PatientDatas.Attach(patient);
-            
+
             // добавляем информацию о запии в базу данных
             db.PatientDatas.Add(patient);
             db.SaveChanges();
@@ -41,7 +76,7 @@ namespace ElectroCardsWebApplicationVariant7.Controllers
         [HttpGet]
         public ActionResult AddDoctor()
         {
-            
+
             return View();
         }
 
@@ -65,7 +100,7 @@ namespace ElectroCardsWebApplicationVariant7.Controllers
         [HttpGet]
         public ActionResult RemovePatient()
         {
-            
+
             return View();
 
         }
@@ -79,7 +114,7 @@ namespace ElectroCardsWebApplicationVariant7.Controllers
                 if (p.Name == patient.Name && p.Surname == patient.Surname)
                 {
                     db.PatientDatas.Remove(p);
-                    
+
 
                 }
             }
@@ -130,17 +165,7 @@ namespace ElectroCardsWebApplicationVariant7.Controllers
 
         }
 
-        [HttpPost]
-        public ActionResult EditPatientOldData(PatientData oldPatient,PatientData newPatient)
-        {
-            db.PatientDatas.Attach(oldPatient);
-            db.PatientDatas.Remove(oldPatient);
-            
-            db.PatientDatas.Add(newPatient);
-            db.Entry(newPatient).State = EntityState.Added;
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
+        
 
         [HttpGet]
         public ActionResult SearchForOldData()
@@ -153,7 +178,7 @@ namespace ElectroCardsWebApplicationVariant7.Controllers
 
         public ActionResult Index()
         {
-      
+
             return View();
         }
     }

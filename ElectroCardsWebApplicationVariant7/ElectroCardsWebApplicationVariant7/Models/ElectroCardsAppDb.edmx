@@ -5,7 +5,18 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="Хранилище ApplicationCardsDbModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="Patients">
+        <EntityType Name="Doctors">
+          <Key>
+            <PropertyRef Name="DoctorId" />
+          </Key>
+          <Property Name="DoctorId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="10" />
+          <Property Name="Surname" Type="nvarchar" MaxLength="50" />
+          <Property Name="Patronymic" Type="nvarchar" MaxLength="50" />
+          <Property Name="Position" Type="nvarchar" MaxLength="50" />
+          <Property Name="Telephone" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="PatientData">
           <Key>
             <PropertyRef Name="PatientId" />
           </Key>
@@ -13,10 +24,17 @@
           <Property Name="Name" Type="nvarchar" MaxLength="50" />
           <Property Name="Surname" Type="nvarchar" MaxLength="50" />
           <Property Name="Patronymic" Type="nvarchar" MaxLength="50" />
-          <Property Name="BirthDate" Type="nvarchar" MaxLength="50" />
+          <Property Name="BirthDate" Type="date" />
           <Property Name="Telephone" Type="nvarchar" MaxLength="50" />
           <Property Name="WorkPlace" Type="nvarchar" MaxLength="50" />
-          <Property Name="Photo" Type="nvarchar" MaxLength="50" />
+          <Property Name="RecordDate" Type="date" />
+          <Property Name="Diagnose" Type="nvarchar" MaxLength="50" />
+          <Property Name="Medicine" Type="nvarchar" MaxLength="50" />
+          <Property Name="WayOfUsingMedicine" Type="nvarchar" MaxLength="50" />
+          <Property Name="DoctorId" Type="int" Nullable="false" />
+          <Property Name="SickLeaveNum" Type="int" />
+          <Property Name="SickLeavePeriod" Type="int" />
+          <Property Name="DiagnoseCode" Type="int" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -27,16 +45,45 @@
           <Property Name="Password" Type="nvarchar" MaxLength="50" />
           <Property Name="Role" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <Association Name="FK__PatientDa__Docto__72C60C4A">
+          <End Role="Doctors" Type="Self.Doctors" Multiplicity="1" />
+          <End Role="PatientData" Type="Self.PatientData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Doctors">
+              <PropertyRef Name="DoctorId" />
+            </Principal>
+            <Dependent Role="PatientData">
+              <PropertyRef Name="DoctorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="Хранилище ApplicationCardsDbModelContainer">
-          <EntitySet Name="Patients" EntityType="Self.Patients" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Doctors" EntityType="Self.Doctors" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PatientData" EntityType="Self.PatientData" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__PatientDa__Docto__72C60C4A" Association="Self.FK__PatientDa__Docto__72C60C4A">
+            <End Role="Doctors" EntitySet="Doctors" />
+            <End Role="PatientData" EntitySet="PatientData" />
+          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ApplicationCardsDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Patient">
+        <EntityType Name="Doctor">
+          <Key>
+            <PropertyRef Name="DoctorId" />
+          </Key>
+          <Property Name="DoctorId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Position" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Telephone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="PatientDatas" Relationship="Self.FK__PatientDa__Docto__72C60C4A" FromRole="Doctors" ToRole="PatientData" />
+        </EntityType>
+        <EntityType Name="PatientData">
           <Key>
             <PropertyRef Name="PatientId" />
           </Key>
@@ -44,10 +91,18 @@
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="BirthDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BirthDate" Type="DateTime" Precision="0" />
           <Property Name="Telephone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="WorkPlace" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Photo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RecordDate" Type="DateTime" Precision="0" />
+          <Property Name="Diagnose" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Medicine" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="WayOfUsingMedicine" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DoctorId" Type="Int32" Nullable="false" />
+          <Property Name="SickLeaveNum" Type="Int32" />
+          <Property Name="SickLeavePeriod" Type="Int32" />
+          <Property Name="DiagnoseCode" Type="Int32" />
+          <NavigationProperty Name="Doctor" Relationship="Self.FK__PatientDa__Docto__72C60C4A" FromRole="PatientData" ToRole="Doctors" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -58,19 +113,48 @@
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityContainer Name="ApplicationCardsDbEntities1" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Patients" EntityType="Self.Patient" />
+        <Association Name="FK__PatientDa__Docto__72C60C4A">
+          <End Role="Doctors" Type="Self.Doctor" Multiplicity="1" />
+          <End Role="PatientData" Type="Self.PatientData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Doctors">
+              <PropertyRef Name="DoctorId" />
+            </Principal>
+            <Dependent Role="PatientData">
+              <PropertyRef Name="DoctorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ApplicationCardsDbEntities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Doctors" EntityType="Self.Doctor" />
+          <EntitySet Name="PatientDatas" EntityType="Self.PatientData" />
           <EntitySet Name="Users" EntityType="Self.User" />
+          <AssociationSet Name="FK__PatientDa__Docto__72C60C4A" Association="Self.FK__PatientDa__Docto__72C60C4A">
+            <End Role="Doctors" EntitySet="Doctors" />
+            <End Role="PatientData" EntitySet="PatientDatas" />
+          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище ApplicationCardsDbModelContainer" CdmEntityContainer="ApplicationCardsDbEntities1">
-          <EntitySetMapping Name="Patients">
-            <EntityTypeMapping TypeName="ApplicationCardsDbModel.Patient">
-              <MappingFragment StoreEntitySet="Patients">
+        <EntityContainerMapping StorageEntityContainer="Хранилище ApplicationCardsDbModelContainer" CdmEntityContainer="ApplicationCardsDbEntities2">
+          <EntitySetMapping Name="Doctors">
+            <EntityTypeMapping TypeName="ApplicationCardsDbModel.Doctor">
+              <MappingFragment StoreEntitySet="Doctors">
+                <ScalarProperty Name="DoctorId" ColumnName="DoctorId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PatientDatas">
+            <EntityTypeMapping TypeName="ApplicationCardsDbModel.PatientData">
+              <MappingFragment StoreEntitySet="PatientData">
                 <ScalarProperty Name="PatientId" ColumnName="PatientId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Surname" ColumnName="Surname" />
@@ -78,7 +162,14 @@
                 <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
                 <ScalarProperty Name="Telephone" ColumnName="Telephone" />
                 <ScalarProperty Name="WorkPlace" ColumnName="WorkPlace" />
-                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="RecordDate" ColumnName="RecordDate" />
+                <ScalarProperty Name="Diagnose" ColumnName="Diagnose" />
+                <ScalarProperty Name="Medicine" ColumnName="Medicine" />
+                <ScalarProperty Name="WayOfUsingMedicine" ColumnName="WayOfUsingMedicine" />
+                <ScalarProperty Name="DoctorId" ColumnName="DoctorId" />
+                <ScalarProperty Name="SickLeaveNum" ColumnName="SickLeaveNum" />
+                <ScalarProperty Name="SickLeavePeriod" ColumnName="SickLeavePeriod" />
+                <ScalarProperty Name="DiagnoseCode" ColumnName="DiagnoseCode" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

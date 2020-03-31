@@ -13,10 +13,10 @@ namespace ElectroCardsWebApplicationVariant7.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class ApplicationCardsDbEntities1 : DbContext
+    public partial class ApplicationCardsDbEntities2 : DbContext
     {
-        public ApplicationCardsDbEntities1()
-            : base("name=ApplicationCardsDbEntities1")
+        public ApplicationCardsDbEntities2()
+            : base("name=ApplicationCardsDbEntities2")
         {
         }
     
@@ -25,7 +25,8 @@ namespace ElectroCardsWebApplicationVariant7.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Patient> Patients { get; set; }
+        public virtual DbSet<Doctor> Doctors { get; set; }
+        public virtual DbSet<PatientData> PatientDatas { get; set; }
         public virtual DbSet<User> Users { get; set; }
     }
 }

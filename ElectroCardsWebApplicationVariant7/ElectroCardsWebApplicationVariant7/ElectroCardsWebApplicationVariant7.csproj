@@ -119,6 +119,9 @@
       <Private>True</Private>
       <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="WebMatrix.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.Data.2.0.20710.0\lib\net40\WebMatrix.Data.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
@@ -130,9 +133,14 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\DoctorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Doctor.cs">
+      <DependentUpon>ElectroCardsAppDb.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ElectroCardsAppDb.Context.cs">
       <AutoGen>True</AutoGen>
@@ -149,7 +157,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ElectroCardsAppDb.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\Patient.cs">
+    <Compile Include="Models\PatientData.cs">
       <DependentUpon>ElectroCardsAppDb.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\User.cs">
@@ -196,7 +204,9 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -217,6 +227,18 @@
     <Content Include="Views\Home\RemovePatient.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Home\EditPatientOldData.cshtml" />
+    <Content Include="Views\Home\AddDoctor.cshtml" />
+    <Content Include="Views\Home\RemoveDoctor.cshtml" />
+    <Content Include="Views\Admin\AddUser.cshtml" />
+    <Content Include="Views\Admin\RemoveUser.cshtml" />
+    <Content Include="Views\Admin\AddDoctor.cshtml" />
+    <Content Include="Views\Admin\RemoveDoctor.cshtml" />
+    <Content Include="Views\Admin\AddPatient.cshtml" />
+    <Content Include="Views\Admin\RemovePatient.cshtml" />
+    <Content Include="Views\Doctor\AddDoctor.cshtml" />
+    <Content Include="Views\Doctor\AddPatient.cshtml" />
+    <Content Include="Views\Doctor\SearchForPatients.cshtml" />
+    <Content Include="Views\Doctor\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

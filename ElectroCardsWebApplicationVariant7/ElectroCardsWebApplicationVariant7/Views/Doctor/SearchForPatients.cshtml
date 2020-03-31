@@ -1,0 +1,100 @@
+﻿
+@{
+    Layout = null;
+}
+
+@model IEnumerable<ElectroCardsWebApplicationVariant7.Models.PatientData>
+@{
+    ViewBag.Title = "Каталог пациентов";
+}
+
+<h2>Каталог пациентов</h2>
+
+<table>
+    <tr>
+        <th>Имя   </th>
+        <th>  </th>
+        <th>  Фамилия </th>
+        <th>  </th>
+        <th>   Отчество</th>
+        <th>  </th>
+        <th>   Дата рождения </th>
+        <th>  </th>
+        <th>   Телефон </th>
+        <th>  </th>
+        <th>   Место работы </th>
+        <th>  </th>
+        <th>   Дата записи</th>
+        <th>  </th>
+        <th>   Диагноз</th>
+        <th>  </th>
+        <th>   Лекарства(процедуры)</th>
+        <th>  </th>
+        <th>   Способ применения</th>
+        <th>  </th>
+        <th>   Номер больничного листа</th>
+        <th>  </th>
+        <th>   Период действия больничного листа</th>
+        <th>  </th>
+        <th>   Код диагноза</th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <th>  </th>
+        <td>
+            @Html.DisplayFor(modelItem => item.Surname)
+        </td>
+        <th>  </th>
+        <td>
+            @Html.DisplayFor(modelItem => item.Patronymic)
+        </td>
+        <th>  </th>
+        <td>
+            @Html.DisplayFor(modelItem => item.BirthDate)
+        </td>
+        <th>  </th>
+        <td>
+            @Html.DisplayFor(modelItem => item.Telephone)
+        </td>
+        <th>  </th>
+        <td>
+            @Html.DisplayFor(modelItem => item.WorkPlace)
+        </td>
+        <th>  </th>
+        <td>
+            @Html.DisplayFor(modelItem => item.RecordDate)
+        </td>
+        <th>  </th>
+        <td>
+            @Html.DisplayFor(modelItem => item.Diagnose)
+        </td>
+        <th>  </th>
+        <td>
+            @Html.DisplayFor(modelItem => item.Medicine)
+        </td>
+        <th>  </th>
+        <td>
+            @Html.DisplayFor(modelItem => item.WayOfUsingMedicine)
+        </td>
+        <th>  </th>
+        <td>
+            @Html.DisplayFor(modelItem => item.SickLeaveNum)
+        </td>
+        <th>  </th>
+        <td>
+            @Html.DisplayFor(modelItem => item.SickLeavePeriod)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DiagnoseCode)
+        </td>
+
+
+    </tr>
+    }
+</table>

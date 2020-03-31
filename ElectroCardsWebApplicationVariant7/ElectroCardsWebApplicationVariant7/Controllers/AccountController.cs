@@ -9,7 +9,7 @@ namespace ElectroCardsWebApplicationVariant7.Controllers
 {
     public class AccountController : Controller
     {
-        ApplicationCardsDbEntities1 db = new ApplicationCardsDbEntities1();
+        ApplicationCardsDbEntities2 db = new ApplicationCardsDbEntities2();
 
         public ActionResult Index()
         {
@@ -34,13 +34,26 @@ namespace ElectroCardsWebApplicationVariant7.Controllers
         [HttpPost]
         public ActionResult Register(User user)
         {
-            ApplicationCardsDbEntities1 db = new ApplicationCardsDbEntities1();
+            ApplicationCardsDbEntities2 db = new ApplicationCardsDbEntities2();
      
             db.Users.Attach(user);
             db.Users.Add(user);
             
             db.SaveChanges();
-            return RedirectToAction("Index","Home"); 
+            switch (user.Role)
+            {
+                case "user":
+                    return RedirectToAction("Index", "Home");
+                case "doctor":
+                    return RedirectToAction("Index", "Doctor");
+                case "editor":
+                    return RedirectToAction("Index", "Home");
+                case "admin":
+                    return RedirectToAction("Index", "Admin");
+
+            }
+            return RedirectToAction("Index", "Home");
+        
 
         }
     }
