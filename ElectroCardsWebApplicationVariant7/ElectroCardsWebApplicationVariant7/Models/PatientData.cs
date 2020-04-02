@@ -27,7 +27,7 @@ namespace ElectroCardsWebApplicationVariant7.Models
         public string WayOfUsingMedicine { get; set; }
         public int DoctorId { get; set; }
         public Nullable<int> SickLeaveNum { get; set; }
-        public Nullable<int> SickLeavePeriod { get; set; }
+        public string SickLeavePeriod { get; set; }
         public Nullable<int> DiagnoseCode { get; set; }
     
         public virtual Doctor Doctor { get; set; }

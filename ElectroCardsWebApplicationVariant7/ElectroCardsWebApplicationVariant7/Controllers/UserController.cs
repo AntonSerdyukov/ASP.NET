@@ -48,7 +48,8 @@ namespace ElectroCardsWebApplicationVariant7.Controllers
         public ActionResult SearchForPatientsByRecordingDate(string searchString)
         {
             var patients = from p in db.PatientDatas
-                           select p ;
+                           select p;
+
             if (!string.IsNullOrEmpty(searchString))
             {
                 patients = patients.Where(p => p.RecordDate.ToString().Contains(searchString));
@@ -61,6 +62,7 @@ namespace ElectroCardsWebApplicationVariant7.Controllers
         {
             var patients = from p in db.PatientDatas
                            select p;
+
             if (!string.IsNullOrEmpty(searchString))
             {
                 patients = patients.Where(p => p.Diagnose.Contains(searchString));
@@ -69,16 +71,17 @@ namespace ElectroCardsWebApplicationVariant7.Controllers
             return View(patients.ToList());
         }
 
-        public ActionResult SearchForDoctorsByPosition(string searchString)
+        public ActionResult SearchForPatientsByDoctorPosition(string searchString)
         {
-            var doctors = from d in db.Doctors
-                           select d;
+            var patients = from p in db.PatientDatas
+                           select p;
             if (!string.IsNullOrEmpty(searchString))
             {
-                doctors = doctors.Where(d => d.Position.Contains(searchString));
+                patients = patients.Where(p => p.Doctor.Position.Contains(searchString));
+
             }
 
-            return View(doctors.ToList());
+            return View(patients.ToList());
         }
 
         

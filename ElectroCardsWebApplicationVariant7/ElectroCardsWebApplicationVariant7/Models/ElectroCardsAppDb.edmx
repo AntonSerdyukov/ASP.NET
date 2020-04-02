@@ -33,7 +33,7 @@
           <Property Name="WayOfUsingMedicine" Type="nvarchar" MaxLength="50" />
           <Property Name="DoctorId" Type="int" Nullable="false" />
           <Property Name="SickLeaveNum" Type="int" />
-          <Property Name="SickLeavePeriod" Type="int" />
+          <Property Name="SickLeavePeriod" Type="nvarchar" MaxLength="50" />
           <Property Name="DiagnoseCode" Type="int" />
         </EntityType>
         <EntityType Name="Users">
@@ -100,7 +100,7 @@
           <Property Name="WayOfUsingMedicine" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="DoctorId" Type="Int32" Nullable="false" />
           <Property Name="SickLeaveNum" Type="Int32" />
-          <Property Name="SickLeavePeriod" Type="Int32" />
+          <Property Name="SickLeavePeriod" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="DiagnoseCode" Type="Int32" />
           <NavigationProperty Name="Doctor" Relationship="Self.FK__PatientDa__Docto__72C60C4A" FromRole="PatientData" ToRole="Doctors" />
         </EntityType>
