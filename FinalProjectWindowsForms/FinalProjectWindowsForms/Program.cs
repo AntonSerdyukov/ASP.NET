@@ -16,7 +16,7 @@ namespace FinalProjectWindowsForms
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FinancialHelperForm());
+            Application.Run(new Authorization());
         }
     }
 }

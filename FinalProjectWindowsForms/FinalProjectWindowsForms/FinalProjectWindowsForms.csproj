@@ -8,10 +8,11 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>FinalProjectWindowsForms</RootNamespace>
     <AssemblyName>FinalProjectWindowsForms</AssemblyName>
-    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -50,13 +51,38 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccountantDepartment.cs" />
+    <Compile Include="AddEmployeeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddEmployeeForm.Designer.cs">
+      <DependentUpon>AddEmployeeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Authorization.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Authorization.Designer.cs">
+      <DependentUpon>Authorization.cs</DependentUpon>
+    </Compile>
     <Compile Include="Budget.cs" />
     <Compile Include="BudgetData.cs" />
+    <Compile Include="ChooseActionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChooseActionForm.Designer.cs">
+      <DependentUpon>ChooseActionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditEmployeeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditEmployeeForm.Designer.cs">
+      <DependentUpon>EditEmployeeForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="EmployeeData.cs" />
     <Compile Include="EmployeesFile.cs" />
     <Compile Include="Expenses.cs" />
     <Compile Include="FileForBudget.cs" />
     <Compile Include="FileForEmployees.cs" />
+    <Compile Include="FIleForUsers.cs" />
     <Compile Include="FinancialDepartment.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -66,13 +92,61 @@
     </Compile>
     <Compile Include="IEmployeesFile.cs" />
     <Compile Include="Incomes.cs" />
+    <Compile Include="PrognoseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PrognoseForm.Designer.cs">
+      <DependentUpon>PrognoseForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RegistrationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegistrationForm.Designer.cs">
+      <DependentUpon>RegistrationForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RemoveEmployeeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RemoveEmployeeForm.Designer.cs">
+      <DependentUpon>RemoveEmployeeForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="SalesDepartment.cs" />
+    <Compile Include="SearchForEmployees.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SearchForEmployees.Designer.cs">
+      <DependentUpon>SearchForEmployees.cs</DependentUpon>
+    </Compile>
     <Compile Include="TransportDepartment.cs" />
+    <Compile Include="User.cs" />
+    <Compile Include="UserData.cs" />
     <Compile Include="Validator.cs" />
+    <Compile Include="WorkWithEmployeesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WorkWithEmployeesForm.Designer.cs">
+      <DependentUpon>WorkWithEmployeesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WorkWithUserAccounts.cs" />
+    <EmbeddedResource Include="AddEmployeeForm.resx">
+      <DependentUpon>AddEmployeeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Authorization.resx">
+      <DependentUpon>Authorization.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChooseActionForm.resx">
+      <DependentUpon>ChooseActionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditEmployeeForm.resx">
+      <DependentUpon>EditEmployeeForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PrognoseForm.resx">
+      <DependentUpon>PrognoseForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -82,7 +156,22 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="RegistrationForm.resx">
+      <DependentUpon>RegistrationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RemoveEmployeeForm.resx">
+      <DependentUpon>RemoveEmployeeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SearchForEmployees.resx">
+      <DependentUpon>SearchForEmployees.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WorkWithEmployeesForm.resx">
+      <DependentUpon>WorkWithEmployeesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="ClassDiagram1.cd" />
+    <None Include="ClassDiagram2.cd" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -96,6 +185,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Model\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

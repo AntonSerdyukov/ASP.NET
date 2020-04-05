@@ -12,6 +12,7 @@ namespace FinalProjectWindowsForms
         public decimal LoaderPlannedSalary { get; }
         public double TaxPercent { get; }
         public List<EmployeeData> EmployeesData { get; } 
+        public EmployeeData EmpData { get; }
         public decimal SumOfSalaries { get; }
         public EmployeesFile EmpFile { get; }
 

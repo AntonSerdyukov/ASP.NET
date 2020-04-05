@@ -27,6 +27,22 @@ namespace FinalProjectWindowsForms
             FileData = GetDataFromFile();
         }
 
+        public List<EmployeeData> SearchForData(string name,string surname)
+        {
+            List<EmployeeData> resultList = new List<EmployeeData>();
+            using (StreamReader sr = new StreamReader(JsonFilePath, true))
+            {
+                for (int i = 0; i < FileData.Count; i++)
+                {
+                    if (name==FileData[i].Name && surname==FileData[i].Surname)
+                    {
+                        resultList.Add(FileData[i]);
+                    }
+                }
+            }
+            return resultList;
+        }
+
         public List<EmployeeData> GetDataFromFile()
         {
             FileData = new List<EmployeeData>();
@@ -98,6 +114,22 @@ namespace FinalProjectWindowsForms
                     RemoveData(name,surname);
                     Validator validator = new Validator();
                     EmployeeData updatedEmployee = new EmployeeData(name, surname, 0, 0, validator.ConvertToIntValue(newNumOfSkippingDays), validator.ConvertToIntValue(newNumOfOverWorkingDays), FileData[i].ProfessionName);
+                    AddData(updatedEmployee);
+                }
+
+            }
+        }
+
+        public void EditEmployeeInformation(string name, string surname, string profession, string newName, string newSurname, string newProfession)
+        {
+
+            for (int i = 0; i < FileData.Count; i++)
+            {
+                if (FileData[i].Name == name && FileData[i].Surname == surname && FileData[i].ProfessionName == profession)
+                {
+                    RemoveData(name, surname);
+                    Validator validator = new Validator();
+                    EmployeeData updatedEmployee = new EmployeeData(newName, newSurname, 0, 0, 0, 0, newProfession);
                     AddData(updatedEmployee);
                 }
 

@@ -144,5 +144,10 @@ namespace FinalProjectWindowsForms
         {
             Environment.Exit(0);
         }
+
+        private void SellerPlanSalary_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -138,6 +138,7 @@
             this.SellerPlanSalary.Name = "SellerPlanSalary";
             this.SellerPlanSalary.Size = new System.Drawing.Size(100, 20);
             this.SellerPlanSalary.TabIndex = 5;
+            this.SellerPlanSalary.TextChanged += new System.EventHandler(this.SellerPlanSalary_TextChanged);
             // 
             // AccountantPlanSalary
             // 
